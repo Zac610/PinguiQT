@@ -2,20 +2,22 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include "NodeModel.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
 QT_END_NAMESPACE
 
-class Widget : public QWidget
+class MainForm : public QWidget
 {
     Q_OBJECT
 
 public:
-    Widget(QWidget *parent = nullptr);
-    ~Widget();
+    MainForm(QWidget *parent = nullptr);
+    ~MainForm();
 
 private:
     Ui::Widget *ui;
+    NodeModel *mModel;
 };
 #endif // WIDGET_H
