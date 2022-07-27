@@ -1,5 +1,5 @@
 #include "MainForm.h"
-#include "ui_widget.h"
+#include "ui_MainForm.h"
 
 
 MainForm::MainForm(QWidget *parent)
