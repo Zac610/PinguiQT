@@ -11,15 +11,15 @@ CONFIG += c++17
 SOURCES += \
     NodeModel.cpp \
     main.cpp \
-    widget.cpp
+    MainForm.cpp
 
 HEADERS += \
     NodeModel.h \
     appInfo.h \
-    widget.h
+    MainForm.h
 
 FORMS += \
-    widget.ui
+    MainForm.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
