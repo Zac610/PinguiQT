@@ -10,14 +10,14 @@ QT_END_NAMESPACE
 
 class MainForm : public QWidget
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    MainForm(QWidget *parent = nullptr);
-    ~MainForm();
+	MainForm(QWidget *parent = nullptr);
+	~MainForm();
 
 private:
-    Ui::Widget *ui;
-    NodeModel *mModel;
+	Ui::Widget *ui;
+	NodeModel *mModel;
 };
 #endif // WIDGET_H

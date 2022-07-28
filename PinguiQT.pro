@@ -11,12 +11,14 @@ CONFIG += c++17
 SOURCES += \
     NodeModel.cpp \
     main.cpp \
-    MainForm.cpp
+    MainForm.cpp \
+    NodeStatus.cpp
 
 HEADERS += \
     NodeModel.h \
     appInfo.h \
-    MainForm.h
+    MainForm.h \
+    NodeStatus.h
 
 FORMS += \
     MainForm.ui
