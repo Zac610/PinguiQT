@@ -36,6 +36,8 @@ NodeModel::NodeModel(QObject *parent) : QAbstractTableModel(parent)
 
 		file.close();
 	}
+	if (mNodeList.empty())
+		mNodeList << NodeStatus();
 }
 
 int NodeModel::rowCount(const QModelIndex & /*parent*/) const
@@ -47,16 +49,12 @@ int NodeModel::columnCount(const QModelIndex & /*parent*/) const { return 2; }
 
 QVariant NodeModel::data(const QModelIndex &index, int role) const
 {
-	QString retVal = "";
 	if (role == Qt::DisplayRole)
+
 		switch (index.column())
 		{
-			case COL_IP:
-				retVal = "prova"; // gNodeList.at(index.row()).ip;
-				break;
-			case COL_LAST_SEEN:
-				retVal = "p2"; //""+gNodeList.at(index.row()).cyclesNotReplying;
-				break;
+			case COL_IP: return mNodeList.at(index.row()).ip;
+			case COL_LAST_SEEN: return mNodeList.at(index.row()).cyclesNotReplying;
 			default: break;
 		}
 

@@ -22,6 +22,7 @@ struct NodeStatus
 	bool replied;
 
 	NodeStatus(QString confLine);
+	NodeStatus();
 };
 
 #endif // NODESTATUS_H
