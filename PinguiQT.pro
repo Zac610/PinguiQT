@@ -12,16 +12,19 @@ SOURCES += \
     NodeModel.cpp \
     main.cpp \
     MainForm.cpp \
-    NodeStatus.cpp
+    NodeStatus.cpp \
+    ConfDialog.cpp
 
 HEADERS += \
     NodeModel.h \
     appInfo.h \
     MainForm.h \
-    NodeStatus.h
+    NodeStatus.h \
+    ConfDialog.h
 
 FORMS += \
-    MainForm.ui
+    MainForm.ui \
+    ConfDialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

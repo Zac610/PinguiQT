@@ -18,8 +18,6 @@ enum ColumList
 NodeModel::NodeModel(QObject *parent) : QAbstractTableModel(parent)
 {
 	QString confFile = QDir::currentPath() + QDir::separator() + "Pingui.conf";
-	std::cout << "----test scrittura " << confFile.toLocal8Bit().data()
-						<< std::endl;
 	QFile file(confFile);
 	if (file.open(QIODevice::ReadOnly))
 	{
