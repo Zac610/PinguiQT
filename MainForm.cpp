@@ -24,14 +24,36 @@ MainForm::~MainForm()
 
 bool MainForm::eventFilter(QObject *obj, QEvent *event)
 {
-	std::cout << event->type() << std::endl;
+	//	std::cout << event->type() << std::endl;
 	if (event->type() == QEvent::MouseButtonRelease)
 	{
 		std::cout << "Mouse Released" << std::endl;
+		mStartDrag = false;
 	}
 	else if (event->type() == QEvent::MouseButtonPress)
 	{
+		QMouseEvent *mousEv = static_cast<QMouseEvent *>(event);
 		std::cout << "Mouse Pressed" << std::endl;
+		if (mousEv->button() == Qt::LeftButton)
+		{
+			mStartDrag = true;
+			mStartDragPoint = mousEv->pos();
+		}
+		else if (mousEv->button() == Qt::RightButton)
+			QApplication::quit();
+	}
+	else if (event->type() == QEvent::MouseMove)
+	{
+		std::cout << "Mouse Move" << std::endl;
+		//		QMouseEvent *mev =
+		//		qDebug() << QString::number(mev->pos().x());
+		//		qDebug() << QString::number(mev->pos().y());
+		//		this->pos() = QCursor::pos();
+		if (mStartDrag)
+		{
+			QPoint dragPos = QCursor::pos() - mStartDragPoint;
+			this->move(dragPos.x(), dragPos.y());
+		}
 	}
 	return false;
 }

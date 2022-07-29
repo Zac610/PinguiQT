@@ -36,5 +36,7 @@ public:
 private:
 	Ui::Widget *ui;
 	NodeModel *mModel;
+	QPoint mStartDragPoint;
+	bool mStartDrag;
 };
 #endif // WIDGET_H
