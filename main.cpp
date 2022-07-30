@@ -36,7 +36,6 @@ int main(int argc, char *argv[])
 	qInstallMessageHandler(myMessageOutput); // Install the handler
 	QApplication a(argc, argv);
 	MainForm w;
-	w.setWindowFlag(Qt::FramelessWindowHint);
 	w.show();
 	return a.exec();
 }

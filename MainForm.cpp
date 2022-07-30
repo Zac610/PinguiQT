@@ -15,6 +15,8 @@ MainForm::MainForm(QWidget *parent) : QWidget(parent), ui(new Ui::Widget)
 	ui->tableView->setMouseTracking(true);
 	ui->tableView->viewport()->installEventFilter(this);
 	mStartDrag = false;
+	setWindowFlag(Qt::FramelessWindowHint);
+	//	AdjustWindowSizeAccordingToModel();
 }
 
 MainForm::~MainForm()
@@ -23,7 +25,7 @@ MainForm::~MainForm()
 	delete ui;
 }
 
-bool MainForm::eventFilter(QObject *obj, QEvent *event)
+bool MainForm::eventFilter(QObject * /*obj*/, QEvent *event)
 {
 	if (event->type() == QEvent::MouseButtonPress)
 	{
@@ -51,11 +53,22 @@ bool MainForm::eventFilter(QObject *obj, QEvent *event)
 	else if (event->type() == QEvent::MouseButtonRelease)
 	{
 		mStartDrag = false;
+		//		AdjustWindowSizeAccordingToModel();
 	}
 	return false;
 }
 
 void MainForm::AdjustWindowSizeAccordingToModel()
 {
-	int width = mModel->rowCount();
+	//	int width = 0;
+	//	for (int i = 0; i < mModel->columnCount(); i++)
+	//		width += ui->tableView->columnWidth(i);
+	//	int height = 0;
+	//	for (int i = 0; i < mModel->rowCount(); i++)
+	//		height += ui->tableView->rowHeight(i);
+	//	std::cout << "height : " << height << " rowCount " << mModel->rowCount()
+	//						<< std ::endl;
+	resize(100, 100);
+	ui->tableView->resize(90, 90);
+	//	ui->tableView->resizeRowsToContents();
 }

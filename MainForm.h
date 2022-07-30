@@ -33,6 +33,8 @@ public:
 
 	bool eventFilter(QObject *obj, QEvent *event);
 
+	void AdjustWindowSizeAccordingToModel();
+
 private:
 	Ui::Widget *ui;
 	NodeModel *mModel;
