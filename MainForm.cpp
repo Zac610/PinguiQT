@@ -14,6 +14,7 @@ MainForm::MainForm(QWidget *parent) : QWidget(parent), ui(new Ui::Widget)
 	ui->tableView->setModel(mModel);
 	ui->tableView->setMouseTracking(true);
 	ui->tableView->viewport()->installEventFilter(this);
+	mStartDrag = false;
 }
 
 MainForm::~MainForm()
@@ -35,7 +36,7 @@ bool MainForm::eventFilter(QObject *obj, QEvent *event)
 		else if (mousEv->button() == Qt::RightButton)
 		{
 			ConfDialog diag;
-			diag.setWindowFlag(Qt::FramelessWindowHint);
+			diag.setWindowFlag(Qt::CustomizeWindowHint);
 			diag.move(QCursor::pos().x() - diag.width() / 2,
 								QCursor::pos().y() - diag.height() / 2);
 			diag.exec();

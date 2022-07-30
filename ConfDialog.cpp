@@ -10,5 +10,3 @@ ConfDialog::ConfDialog(QWidget *parent) :
 ConfDialog::~ConfDialog() { delete ui; }
 
 void ConfDialog::on_pushButton_2_clicked() { QApplication::quit(); }
-
-void ConfDialog::on_pushButton_3_clicked() { close(); }
