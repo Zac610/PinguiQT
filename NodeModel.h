@@ -14,6 +14,8 @@ public:
 	QVariant data(const QModelIndex &index,
 								int role = Qt::DisplayRole) const override;
 
+	void AddElement(QString &nodeName);
+
 private:
 	QList<NodeStatus> mNodeList;
 };

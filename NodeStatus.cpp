@@ -10,8 +10,3 @@ NodeStatus::NodeStatus(QString confLine) :
 	else
 		nodeName = "";
 }
-
-NodeStatus::NodeStatus() :
-		ip("127.0.0.1"), status(DOWN), cyclesNotReplying(0), replied(false)
-{
-}

@@ -3,6 +3,7 @@
 #include "appInfo.h"
 
 #include <QApplication>
+#include <QBrush>
 #include <QDir>
 #include <QFile>
 #include <QSettings>
@@ -35,7 +36,7 @@ NodeModel::NodeModel(QObject *parent) : QAbstractTableModel(parent)
 		file.close();
 	}
 	if (mNodeList.empty())
-		mNodeList << NodeStatus();
+		mNodeList << NodeStatus("127.0.0.1");
 }
 
 int NodeModel::rowCount(const QModelIndex & /*parent*/) const
@@ -47,14 +48,27 @@ int NodeModel::columnCount(const QModelIndex & /*parent*/) const { return 2; }
 
 QVariant NodeModel::data(const QModelIndex &index, int role) const
 {
-	if (role == Qt::DisplayRole)
-
-		switch (index.column())
-		{
-			case COL_IP: return mNodeList.at(index.row()).ip;
-			case COL_LAST_SEEN: return mNodeList.at(index.row()).cyclesNotReplying;
-			default: break;
-		}
+	switch (role)
+	{
+		case Qt::DisplayRole:
+			switch (index.column())
+			{
+				case COL_IP: return mNodeList.at(index.row()).ip;
+				case COL_LAST_SEEN: return mNodeList.at(index.row()).cyclesNotReplying;
+				default: break;
+			}
+		case Qt::BackgroundRole:
+			if (mNodeList.at(index.row()).replied)
+				return QBrush(Qt::green);
+			else
+				return QBrush(Qt::red);
+	}
 
 	return QVariant();
+}
+
+void NodeModel::AddElement(QString &nodeName)
+{
+	mNodeList << NodeStatus(nodeName);
+	// emit dataChanged()
 }

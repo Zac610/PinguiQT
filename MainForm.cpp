@@ -36,12 +36,9 @@ bool MainForm::eventFilter(QObject *obj, QEvent *event)
 		else if (mousEv->button() == Qt::RightButton)
 		{
 			ConfDialog diag;
-			diag.setWindowFlag(Qt::CustomizeWindowHint);
-			diag.move(QCursor::pos().x() - diag.width() / 2,
-								QCursor::pos().y() - diag.height() / 2);
+			diag.mModel = mModel;
 			diag.exec();
 		}
-		//				QApplication::quit();
 	}
 	else if (event->type() == QEvent::MouseMove)
 	{
@@ -56,4 +53,9 @@ bool MainForm::eventFilter(QObject *obj, QEvent *event)
 		mStartDrag = false;
 	}
 	return false;
+}
+
+void MainForm::AdjustWindowSizeAccordingToModel()
+{
+	int width = mModel->rowCount();
 }
